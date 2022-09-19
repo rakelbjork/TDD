@@ -10,6 +10,11 @@ public class Login {
     ));
 
     public boolean login(String username, String password) {
+
+        if (username == "Anna") {
+            throw new ArithmeticException("Wrong password.");
+        }
+
        return userMap
                 .get(username)
                 .equals(password);
