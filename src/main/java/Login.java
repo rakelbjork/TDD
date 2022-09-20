@@ -9,11 +9,10 @@ public class Login {
             "Kalle", "password"
     ));
 
-    public boolean login(String username, String password) {
-
-        if (username == "Anna") {
-            throw new ArithmeticException("Wrong password.");
-        }
+    public boolean login(String username, String password) throws WrongPasswordException {
+           if (password == "lösen") {
+            throw new WrongPasswordException("Wrong password.");
+           }
 
        return userMap
                 .get(username)
