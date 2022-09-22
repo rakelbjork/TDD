@@ -1,3 +1,4 @@
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,14 +10,17 @@ public class Login {
             "Kalle", "password"
     ));
 
-    public boolean login(String username, String password) throws WrongPasswordException {
-           if (password == "lösen") {
-            throw new WrongPasswordException("Wrong password.");
-           }
+    public String login(String username, String password) throws WrongPasswordException {
 
-       return userMap
-                .get(username)
-                .equals(password);
+       if (userMap.get(username).equals(password)) {
+           return new String (Base64.getEncoder().encode(username.getBytes()));
+        } else {
+           throw new WrongPasswordException("Wrong password.");
+       }
+    }
+
+    public String tokenBuilder() {
+        return "";
     }
 }
 
